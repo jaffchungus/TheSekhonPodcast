@@ -8,55 +8,206 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: #003399; /* Matching blue background */
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #003399, #0047AB);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
         .container {
-            background: #003399;
+            background: rgba(0, 51, 153, 0.95);
             text-align: center;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
+            border: 2px solid #FFFFFF;
+            max-width: 600px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
             font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+            font-family: 'Helvetica', sans-serif;
+            letter-spacing: 2px;
         }
 
         .title {
-            font-size: 1.5em;
-            margin: 10px 0;
+            font-size: 2em;
+            margin: 15px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #FFD700;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .icon {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 10px;
-            margin: 20px auto;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #FFFFFF, #F0F0F0);
+            border-radius: 15px;
+            margin: 25px auto;
             display: flex;
             justify-content: center;
             align-items: center;
             clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .icon span {
+            font-size: 2.5em;
+            color: #003399;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #E0E0E0;
+            line-height: 1.6;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         #clock {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: color 0.5s;
+            bottom: 15px;
+            right: 15px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid #FFA500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        #clock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 165, 0, 0.3), rgba(255, 69, 0, 0.3), rgba(255, 165, 0, 0.3));
+            animation: moveOrange 1200s linear infinite; /* 20 minutes = 1200 seconds */
+        }
+
+        @keyframes moveOrange {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        #clock span {
+            position: relative;
+            z-index: 1;
+            color: #FFFFFF;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Additional decorative elements */
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                max-width: 80%;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .title {
+                font-size: 1.5em;
+            }
+
+            .icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .icon span {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            #clock {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
+
+        /* Extra styling for depth and flair */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 15px;
+            z-index: -1;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
     </style>
 </head>
@@ -64,14 +215,15 @@
     <div class="container">
         <h1>The Sekhon Podcast</h1>
         <div class="icon">
-            <!-- Simple icon representation, matching the capitol building style -->
-            <span style="font-size: 2em;">🏛️</span>
+            <span>🏛️</span>
         </div>
         <div class="title">Votes and Verdicts</div>
         <p>Washington Predictions - Tariffs, Tax, Trump - Jan 30</p>
     </div>
 
-    <div id="clock"></div>
+    <div class="glow"></div>
+
+    <div id="clock"><span></span></div>
 
     <script>
         function updateClock() {
@@ -81,8 +233,8 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const timeString = `${hours}:${minutes}:${seconds}`;
             
-            const clock = document.getElementById('clock');
-            clock.textContent = timeString;
+            const clockSpan = document.querySelector('#clock span');
+            clockSpan.textContent = timeString;
 
             // Calculate time in seconds since midnight
             const totalSecondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
@@ -90,22 +242,9 @@
             const twentyMinutes = 1200;
             // Get seconds within a 20-minute cycle
             const secondsInCycle = totalSecondsToday % twentyMinutes;
-            // Calculate color transition (0 to 1 over 20 minutes)
-            const progress = secondsInCycle / twentyMinutes;
-            
-            // Start with orange (#FFA500), end with a darker shade (#FF4500)
-            const startR = 255;
-            const startG = 165;
-            const startB = 0;
-            const endR = 255;
-            const endG = 69;
-            const endB = 0;
-
-            const r = Math.round(startR + (endR - startR) * progress);
-            const g = Math.round(startG + (endG - startG) * progress);
-            const b = Math.round(startB + (endB - startB) * progress);
-
-            clock.style.color = `rgb(${r}, ${g}, ${b})`;
+            // Ensure the animation starts fresh at each cycle
+            const progress = (secondsInCycle / twentyMinutes) * 100;
+            document.getElementById('clock').style.setProperty('--progress', `${progress}%`);
         }
 
         // Update clock immediately and then every second
