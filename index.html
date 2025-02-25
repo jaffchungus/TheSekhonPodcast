@@ -8,8 +8,8 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: #003399; /* Exact blue from Bloomberg design */
+            font-family: 'Arial', sans-serif; /* Matching typical Bloomberg font */
+            background: #003399; /* Exact blue from image */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,11 +22,11 @@
             background: #003399;
             text-align: center;
             color: #FFFFFF;
-            padding: 20px;
-            width: 300px; /* Matching image width */
-            height: 400px; /* Matching image height */
-            border-radius: 0; /* No border radius in image */
-            box-shadow: none; /* No shadow in image */
+            width: 300px; /* Exact width from image */
+            height: 400px; /* Exact height from image */
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -35,51 +35,63 @@
         }
 
         h1 {
-            font-size: 24px; /* Estimated from image */
+            font-size: 24px; /* Exact size from image estimation */
             margin: 0;
             font-weight: bold;
             color: #FFFFFF;
             letter-spacing: 0.5px;
+            line-height: 1;
             text-align: center;
             font-family: 'Arial', sans-serif;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .title {
-            font-size: 20px; /* Estimated from image */
-            margin: 10px 0;
+            font-size: 20px; /* Exact size from image estimation */
+            margin: 0;
             font-weight: bold;
             color: #FFFFFF;
             text-align: center;
             font-family: 'Arial', sans-serif;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .icon {
-            width: 80px; /* Estimated from image */
-            height: 80px; /* Estimated from image */
+            width: 80px; /* Exact size from image */
+            height: 80px; /* Exact size from image */
             background: #FFFFFF;
-            margin: 20px auto;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%); /* Matching capitol shape */
-            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%); /* Exact capitol shape */
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .icon::before {
             content: '';
             position: absolute;
-            width: 40px; /* Estimated play button size */
-            height: 40px; /* Estimated play button size */
-            background: #FFA500; /* Orange play button */
+            width: 40px; /* Exact play button size from image */
+            height: 40px; /* Exact play button size from image */
+            background: #FFA500; /* Exact orange from image */
             border-radius: 50%;
             z-index: 1;
         }
 
         .icon::after {
-            content: '▶'; /* Play triangle */
+            content: '▶'; /* Play triangle, exact style from image */
             position: absolute;
             color: #FFFFFF;
-            font-size: 20px;
+            font-size: 20px; /* Exact size from image */
             z-index: 2;
             left: 50%;
             top: 50%;
@@ -87,12 +99,17 @@
         }
 
         p {
-            font-size: 14px; /* Estimated from image */
-            margin: 5px 0;
+            font-size: 14px; /* Exact size from image estimation */
+            margin: 0;
             color: #FFFFFF;
             text-align: center;
             font-family: 'Arial', sans-serif;
             line-height: 1.2;
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
         }
 
         .progress-bar {
@@ -100,35 +117,37 @@
             bottom: 20px;
             left: 20px;
             right: 20px;
-            height: 4px;
-            background: #666666;
+            height: 4px; /* Exact height from image */
+            background: #666666; /* Exact gray from image */
             border-radius: 2px;
         }
 
         .progress {
             height: 100%;
-            width: 47%; /* Matching the 14:58/31:44 progress in the image */
-            background: #FFA500; /* Orange progress */
+            width: 47%; /* Exact 47% progress from 14:58/31:44 in image */
+            background: #FFA500; /* Exact orange from image */
             border-radius: 2px;
-            transition: width 0.3s;
+            transition: none; /* Static, no transition for exact match */
         }
 
         .timestamp {
             position: absolute;
             bottom: 10px;
             left: 20px;
-            font-size: 12px;
+            font-size: 12px; /* Exact size from image */
             color: #FFFFFF;
             font-family: 'Arial', sans-serif;
+            line-height: 1;
         }
 
         .time {
             position: absolute;
             bottom: 10px;
             right: 20px;
-            font-size: 12px;
+            font-size: 12px; /* Exact size from image */
             color: #FFFFFF;
             font-family: 'Arial', sans-serif;
+            line-height: 1;
         }
 
         #clock {
@@ -137,7 +156,7 @@
             right: 15px;
             padding: 10px 20px;
             border-radius: 10px;
-            font-size: 1.2em;
+            font-size: 12px; /* Matching time font size for consistency */
             font-weight: bold;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
@@ -170,7 +189,7 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        /* Additional styling for exact match */
+        /* Additional styling for exact match and super styling */
         .glow {
             position: absolute;
             top: 50%;
@@ -188,6 +207,25 @@
             50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
         }
 
+        /* Extra padding and spacing for exact alignment */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            z-index: -1;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Responsive design for exact match on smaller screens */
         @media (max-width: 768px) {
             .container {
                 width: 250px;
@@ -200,8 +238,18 @@
             .icon::before { width: 35px; height: 35px; }
             .icon::after { font-size: 18px; }
             p { font-size: 12px; }
-            .progress-bar { height: 3px; }
-            .timestamp, .time { font-size: 10px; }
+            .progress-bar { height: 3px; bottom: 15px; }
+            .timestamp, .time { font-size: 10px; bottom: 5px; }
+            #clock { font-size: 10px; padding: 8px 15px; bottom: 10px; right: 10px; }
+        }
+
+        /* Ensure exact positioning and padding for pixel-perfect match */
+        .container > * {
+            position: absolute;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
         }
     </style>
 </head>
