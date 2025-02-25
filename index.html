@@ -3,118 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sekhon Podcast</title>
+    <title>Votes and Verdicts</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #003399, #0047AB);
+            background: #003399; /* Exact blue from Bloomberg design */
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: relative;
             overflow: hidden;
         }
 
-        header {
-            background: rgba(0, 51, 153, 0.95);
-            padding: 20px;
+        .container {
+            background: #003399;
             text-align: center;
             color: #FFFFFF;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border-bottom: 2px solid #FFFFFF;
+            padding: 20px;
+            width: 300px; /* Matching image width */
+            height: 400px; /* Matching image height */
+            border-radius: 0; /* No border radius in image */
+            box-shadow: none; /* No shadow in image */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        header h1 {
-            font-size: 2.5em;
+        h1 {
+            font-size: 24px; /* Estimated from image */
             margin: 0;
             font-weight: bold;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-        }
-
-        .container {
-            flex: 1;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .channels-list, .episodes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .channel-card, .episode-card {
-            background: #FFFFFF;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .channel-card:hover, .episode-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .channel-card h3, .episode-card h3 {
-            color: #003399;
-            margin: 0 0 10px;
-            font-size: 1.5em;
-        }
-
-        .channel-card p, .episode-card p {
-            color: #333;
-            margin: 0;
-            font-size: 1em;
-        }
-
-        .subscribe-btn, .post-episode-btn {
-            background: #FFA500;
             color: #FFFFFF;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
         }
 
-        .subscribe-btn:hover, .post-episode-btn:hover {
-            background: #FF4500;
+        .title {
+            font-size: 20px; /* Estimated from image */
+            margin: 10px 0;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
         }
 
-        .create-channel-form, .post-episode-form {
+        .icon {
+            width: 80px; /* Estimated from image */
+            height: 80px; /* Estimated from image */
+            background: #FFFFFF;
+            margin: 20px auto;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%); /* Matching capitol shape */
+            position: relative;
         }
 
-        input, textarea {
-            padding: 10px;
-            border: 1px solid #CCC;
-            border-radius: 5px;
-            font-size: 1em;
+        .icon::before {
+            content: '';
+            position: absolute;
+            width: 40px; /* Estimated play button size */
+            height: 40px; /* Estimated play button size */
+            background: #FFA500; /* Orange play button */
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        textarea {
-            height: 100px;
-            resize: vertical;
+        .icon::after {
+            content: '▶'; /* Play triangle */
+            position: absolute;
+            color: #FFFFFF;
+            font-size: 20px;
+            z-index: 2;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            font-size: 14px; /* Estimated from image */
+            margin: 5px 0;
+            color: #FFFFFF;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.2;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            height: 4px;
+            background: #666666;
+            border-radius: 2px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 47%; /* Matching the 14:58/31:44 progress in the image */
+            background: #FFA500; /* Orange progress */
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+
+        .timestamp {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 12px;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .time {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 12px;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
         }
 
         #clock {
@@ -156,6 +170,7 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
+        /* Additional styling for exact match */
         .glow {
             position: absolute;
             top: 50%;
@@ -174,56 +189,33 @@
         }
 
         @media (max-width: 768px) {
-            .channels-list, .episodes-list {
-                grid-template-columns: 1fr;
+            .container {
+                width: 250px;
+                height: 350px;
             }
 
-            header h1 {
-                font-size: 2em;
-            }
-
-            .channel-card, .episode-card {
-                padding: 10px;
-            }
+            h1 { font-size: 20px; }
+            .title { font-size: 18px; }
+            .icon { width: 70px; height: 70px; }
+            .icon::before { width: 35px; height: 35px; }
+            .icon::after { font-size: 18px; }
+            p { font-size: 12px; }
+            .progress-bar { height: 3px; }
+            .timestamp, .time { font-size: 10px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>The Sekhon Podcast</h1>
-    </header>
-
     <div class="container">
-        <div class="section">
-            <h2>Create a Channel</h2>
-            <form id="createChannelForm" class="create-channel-form">
-                <input type="text" id="channelName" placeholder="Channel Name" required>
-                <input type="text" id="channelDescription" placeholder="Description" required>
-                <button type="submit" class="subscribe-btn">Create Channel</button>
-            </form>
+        <h1>Bloomberg Intelligence</h1>
+        <div class="icon"></div>
+        <div class="title">Votes and Verdicts</div>
+        <p>Washington Predictions - Tariffs, Tax, Trump - Jan 30</p>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
-
-        <div class="section">
-            <h2>Post an Episode</h2>
-            <form id="postEpisodeForm" class="post-episode-form">
-                <select id="channelSelect" required>
-                    <option value="">Select a Channel</option>
-                </select>
-                <input type="text" id="episodeTitle" placeholder="Episode Title" required>
-                <textarea id="episodeContent" placeholder="Episode Content (Text)" required></textarea>
-                <button type="submit" class="post-episode-btn">Post Episode</button>
-            </form>
-        </div>
-
-        <div class="section">
-            <h2>Channels</h2>
-            <div class="channels-list" id="channelsList"></div>
-        </div>
-
-        <div class="section">
-            <h2>Latest Episodes</h2>
-            <div class="episodes-list" id="episodesList"></div>
-        </div>
+        <div class="timestamp">14:58</div>
+        <div class="time">2:29 PM</div>
     </div>
 
     <div class="glow"></div>
@@ -231,23 +223,12 @@
     <div id="clock"><span></span></div>
 
     <script>
-        // Data storage (simplified, would use a database in a real application)
-        let channels = JSON.parse(localStorage.getItem('channels')) || [];
-        let episodes = JSON.parse(localStorage.getItem('episodes')) || [];
-        let subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || {};
-
-        function saveData() {
-            localStorage.setItem('channels', JSON.stringify(channels));
-            localStorage.setItem('episodes', JSON.stringify(episodes));
-            localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
-        }
-
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
+            const hours = String(now.getHours() % 12 || 12).padStart(2, '0'); // 12-hour format
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            const timeString = `${hours}:${minutes} ${ampm}`;
             
             const clockSpan = document.querySelector('#clock span');
             clockSpan.textContent = timeString;
@@ -259,99 +240,7 @@
             document.getElementById('clock').style.setProperty('--progress', `${progress}%`);
         }
 
-        // Create Channel
-        document.getElementById('createChannelForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const channelName = document.getElementById('channelName').value;
-            const channelDescription = document.getElementById('channelDescription').value;
-
-            if (!channels.find(c => c.name === channelName)) {
-                channels.push({ name: channelName, description: channelDescription, subscribers: 0 });
-                saveData();
-                renderChannels();
-                document.getElementById('createChannelForm').reset();
-                updateChannelSelect();
-            } else {
-                alert('Channel name already exists!');
-            }
-        });
-
-        // Post Episode
-        document.getElementById('postEpisodeForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const channelName = document.getElementById('channelSelect').value;
-            const episodeTitle = document.getElementById('episodeTitle').value;
-            const episodeContent = document.getElementById('episodeContent').value;
-
-            if (channelName && episodeTitle && episodeContent) {
-                episodes.push({ channel: channelName, title: episodeTitle, content: episodeContent, date: new Date().toISOString() });
-                saveData();
-                renderEpisodes();
-                document.getElementById('postEpisodeForm').reset();
-            }
-        });
-
-        // Subscribe to Channel
-        function subscribe(channelName) {
-            if (!subscriptions[channelName]) {
-                subscriptions[channelName] = true;
-                const channel = channels.find(c => c.name === channelName);
-                if (channel) channel.subscribers++;
-                saveData();
-                renderChannels();
-            }
-        }
-
-        // Render Channels
-        function renderChannels() {
-            const channelsList = document.getElementById('channelsList');
-            channelsList.innerHTML = '';
-            channels.forEach(channel => {
-                const card = document.createElement('div');
-                card.className = 'channel-card';
-                card.innerHTML = `
-                    <h3>${channel.name}</h3>
-                    <p>${channel.description}</p>
-                    <p>Subscribers: ${channel.subscribers}</p>
-                    <button class="subscribe-btn" onclick="subscribe('${channel.name}')">Subscribe</button>
-                `;
-                channelsList.appendChild(card);
-            });
-        }
-
-        // Render Episodes
-        function renderEpisodes() {
-            const episodesList = document.getElementById('episodesList');
-            episodesList.innerHTML = '';
-            episodes.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(episode => {
-                const card = document.createElement('div');
-                card.className = 'episode-card';
-                card.innerHTML = `
-                    <h3>${episode.title}</h3>
-                    <p>Channel: ${episode.channel}</p>
-                    <p>${episode.content.substring(0, 100)}...</p>
-                    <p>Date: ${new Date(episode.date).toLocaleString()}</p>
-                `;
-                episodesList.appendChild(card);
-            });
-        }
-
-        // Update Channel Select Dropdown
-        function updateChannelSelect() {
-            const select = document.getElementById('channelSelect');
-            select.innerHTML = '<option value="">Select a Channel</option>';
-            channels.forEach(channel => {
-                const option = document.createElement('option');
-                option.value = channel.name;
-                option.textContent = channel.name;
-                select.appendChild(option);
-            });
-        }
-
-        // Initial render
-        renderChannels();
-        renderEpisodes();
-        updateChannelSelect();
+        // Update clock immediately and then every second
         updateClock();
         setInterval(updateClock, 1000);
     </script>
